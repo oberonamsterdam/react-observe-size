@@ -1,0 +1,49 @@
+{
+  "name": "react-observe-size",
+  "version": "0.1.0",
+  "description": "Observe element size in react, using ResizeObserver polyfill. Edit",
+  "main": "lib/ObserveSize.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rimraf lib/ && babel src --out-dir lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oberonamsterdam/react-observe-size.git"
+  },
+  "author": "Richard van Willegen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/oberonamsterdam/react-observe-size/issues"
+  },
+  "homepage": "https://github.com/oberonamsterdam/react-observe-size#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^8.0.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-flow": "^6.23.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "eslint": "^3.0.0",
+    "eslint-config-oberon": "^1.1.2",
+    "flow-bin": "^0.56.0",
+    "rimraf": "^2.6.2"
+  },
+  "dependencies": {
+    "resize-observer-polyfill": "^1.4.2"
+  },
+  "PeerDependencies": {
+    "react": "^15.0.0 || ^16.0.0"
+  },
+  "eslintConfig": {
+    "extends": "oberon"
+  },
+  "babel": {
+    "presets": [
+      "flow",
+      "es2015",
+      "stage-0",
+      "react"
+    ]
+  }
+}
