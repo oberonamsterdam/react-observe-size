@@ -12,11 +12,11 @@ for React components.
 
 ## Installation
 
-`npm install react-resize-observer`
+`npm install react-observe-size`
 
 or
 
-`yarn add react-resize-observer`
+`yarn add react-observe-size`
 
 
 ## Usage
