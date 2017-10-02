@@ -6,7 +6,7 @@ Components need to be able to respond to their render width, rendering different
 available space and updating when it changes. Layout changes can have many causes, such as window resizing, device 
 orientation changes, CSS state changes or JavaScript events. 
 
-The [Resize Observer](https://wicg.github.io/ResizeObserver/) spec will solve this problem. react-observe-resize uses
+The [Resize Observer](https://wicg.github.io/ResizeObserver/) spec will solve this problem. react-observe-size uses
 [resize-observer-polyfill](https://github.com/que-etc/resize-observer-polyfill) and provides an easy to use interface
 for React components.
 
