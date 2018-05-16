@@ -1,12 +1,13 @@
 {
   "name": "react-observe-size",
-  "version": "0.1.3",
+  "version": "0.2.0",
   "description": "Observe element size in react, using ResizeObserver polyfill. Edit",
   "main": "lib/ObserveSize.js",
   "types": "lib/ObserveSize.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rimraf lib/ && npx tsc --project . --declaration"
+    "build": "rimraf lib/ && npx tsc --project . --declaration",
+    "prepare": "npm run build"
   },
   "repository": {
     "type": "git",
