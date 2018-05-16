@@ -1,8 +1,6 @@
-// @flow
-
 import ResizeObserver from 'resize-observer-polyfill';
 
-export type ContentRect = {
+export interface ContentRect {
     width: number,
     height: number,
     bottom: number,
@@ -11,7 +9,7 @@ export type ContentRect = {
     right: number
 }
 
-export type ObserverFn = (contentRect: ContentRect) => void
+export type ObserverFn = (contentRect: ContentRect) => void;
 
 const observers = new Map();
 

@@ -1,22 +1,20 @@
-// @flow
-import React, { Component, type Node } from 'react';
-import { observeElementSize, unobserveElementSize } from './observeElementSize';
-import type { ObserverFn } from './observeElementSize';
+import * as React from 'react';
+import { observeElementSize, unobserveElementSize, ObserverFn } from './observeElementSize';
 
-type ObserveSizeProps = {
+export interface ObserveSizeProps {
     observerFn: ObserverFn,
-    children?: Node
+    children?: React.ReactNode
 }
 
-class ObserveSize extends Component<ObserveSizeProps> {
-    element: ?HTMLElement
+class ObserveSize extends React.Component<ObserveSizeProps> {
+    element?: HTMLElement;
 
-    sizeRef = (el: ?HTMLElement) => {
+    sizeRef = (el: HTMLDivElement | null) => {
         if (el) {
             observeElementSize(el, this.props.observerFn);
             this.element = el;
         }
-    }
+    };
 
     componentWillUnmount () {
         if (this.element) {
