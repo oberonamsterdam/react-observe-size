@@ -97,7 +97,7 @@ Renders a `div` element that gets a resize observer. Will unbind observer on unm
 |:---------|:-----|:---------|:------------|
 | observerFn | [ObserverFn](#observerfn) | no | Callback function that gets called on first render and on every layout change |
 | children | `Node` or `function (contentRect:` [ContentRect](#contentrect)`) => Node` | no | The children of the div element that gets monitored |
-| defaults | `Partial<`[ContentRect](#contentrect)`>` | Define defaults for first render. Can be useful for server-side rendering or to prevent flashes of first frame |
+| defaults | `Partial<`[ContentRect](#contentrect)`>` | no | Define defaults for first render. Can be useful for server-side rendering or to prevent flashes of first frame |
 
 ### `ObserverFn`
 `function (contentRect: `[ContentRect](#contentrect)`)`
