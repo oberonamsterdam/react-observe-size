@@ -25,20 +25,12 @@ or
 import React from 'react';
 import ObserveSize from 'react-observe-size';
 
-class MyComponent extends Component {
-    state = {
-        renderWidth: window.innerWidth // an initial guess
-    };
-    
-    render() {
-        const { renderWidth } = this.state
-        return (
-            <ObserveSize observerFn={(layout) => { this.setState({renderWidth: layout.width}) }}>
-                <div style={renderWidth < 600 ? styles.small : styles.large}>...</div>    
-            </ObserveSize>
-        )
-    }
-}
+const MyComponent = () =>
+    <ObserveSize>
+        {({ width }) =>
+            <div style={width < 600 ? styles.small : styles.large}>...</div>
+        }
+    </ObserveSize>
 
 const styles = {
     small: {
@@ -50,6 +42,52 @@ const styles = {
 }
 ```
 
+OR if you need the dimensions outside of your render method:
+
+```jsx
+import React from 'react';
+import ObserveSize from 'react-observe-size';
+
+class MyComponent extends Component {
+    updateDimensions = (width, height) => {
+        // ...
+    };
+    
+    render() {
+        const { renderWidth } = this.state
+        return (
+            <ObserveSize observerFn={(contentRect) => { this.updateDimensions(contentRect.width, contentRect.height); }}>
+                <div>...</div>
+            </ObserveSize>
+        )
+    }
+}
+```
+
+You can also combine the two examples above if you need both use cases.
+
+Note: on the first render there is no layout yet so the contentRect will have its values set to 0. You can define defaults
+using the `defaults` prop to set values for the first render or you can choose to not render the first frame by checking
+the values for 0::
+
+Use defaults for first frame:
+```jsx
+<ObserveSize defaults={{width: 1000}}>
+    {({ width }) => width > 0 &&
+        <div>...</div>
+    }
+</ObserveSize>
+```
+
+Don't render first frame: 
+```jsx
+<ObserveSize>
+    {({ width }) => width > 0 &&
+        <div>...</div>
+    }
+</ObserveSize>
+```
+
 ## API
 
 ### `<ObserveSize />`
@@ -57,8 +95,9 @@ Renders a `div` element that gets a resize observer. Will unbind observer on unm
 
 | Property | Type | Required | Description |
 |:---------|:-----|:---------|:------------|
-| observerFn | [ObserverFn](#observerfn) | yes | Callback function that gets called on first render and on every layout change |
-| children | Node | no | The children of the div element that gets monitored |
+| observerFn | [ObserverFn](#observerfn) | no | Callback function that gets called on first render and on every layout change |
+| children | `Node` or `function (contentRect:` [ContentRect](#contentrect)`) => Node` | no | The children of the div element that gets monitored |
+| defaults | `Partial<`[ContentRect](#contentrect)`>` | Define defaults for first render. Can be useful for server-side rendering or to prevent flashes of first frame |
 
 ### `ObserverFn`
 `function (contentRect: `[ContentRect](#contentrect)`)`

@@ -1,6 +1,6 @@
 {
   "name": "react-observe-size",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "Observe element size in react, using ResizeObserver polyfill. Edit",
   "main": "lib/ObserveSize.js",
   "types": "lib/ObserveSize.d.ts",
