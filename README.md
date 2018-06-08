@@ -68,12 +68,12 @@ You can also combine the two examples above if you need both use cases.
 
 Note: on the first render there is no layout yet so the contentRect will have its values set to 0. You can define defaults
 using the `defaults` prop to set values for the first render or you can choose to not render the first frame by checking
-the values for 0::
+the values for 0:
 
 Use defaults for first frame:
 ```jsx
 <ObserveSize defaults={{width: 1000}}>
-    {({ width }) => width > 0 &&
+    {({ width }) =>
         <div>...</div>
     }
 </ObserveSize>
