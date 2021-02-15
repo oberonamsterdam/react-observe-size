@@ -17,9 +17,11 @@ const observers = new Map();
 // size of the element changes, using ResizeObserver. Supports only one observer per element.
 export const observeElementSize = (element: HTMLElement, observerFn: ObserverFn) => {
     const observer = new ResizeObserver(entries => {
-        if (entries.length === 1) {
-            observerFn(entries[0].contentRect);
-        }
+        window.requestAnimationFrame(() => {
+            if (entries.length === 1) {
+                observerFn(entries[0].contentRect);
+            }
+        });
     });
     observers.set(element, observer);
     observer.observe(element);
